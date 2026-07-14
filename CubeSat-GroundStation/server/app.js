@@ -3,22 +3,25 @@ const http = require("http");
 const { Server } = require("socket.io");
 const path = require("path");
 
+const config = require("./config");
+const logger = require("./logger");
+
+const socketManager = require("./socket");
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-
-const PORT = 3000;
+socketManager.initialize(io);
 
 app.use(express.static(path.join(__dirname, "../public")));
 
 io.on("connection", (socket) => {
-    console.log("✅ Client connected");
+    logger.info("Client connected");
 
     socket.on("disconnect", () => {
-        console.log("❌ Client disconnected");
+        logger.warning("Client disconnected");
     });
 });
 
-server.listen(PORT, () => {
-    console.log(`🚀 Ground Station running at http://localhost:${PORT}`);
+server.listen(config.server.port, () => {
+    logger.info(`🚀 Ground Station running at http://localhost:${config.server.port}`);
 });
