@@ -5,7 +5,7 @@ const io = require("socket.io")(http);
 const { SerialPort } = require("serialport");
 const { ReadlineParser } = require("@serialport/parser-readline");
 
-const SERIAL_PATH = "COM6";   // <-- öz portunu yaz
+const SERIAL_PATH = "COM13";   // <-- öz portunu yaz
 const BAUD_RATE   = 115200;
 const HTTP_PORT   = 3000;
 
