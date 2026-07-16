@@ -78,6 +78,8 @@ async function connect() {
 
         parser.on("data", (line) => {
 
+            console.log("RAW:", line);
+
             telemetry.processTelemetry(line);
 
         });

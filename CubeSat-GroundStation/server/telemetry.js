@@ -61,6 +61,8 @@ function processTelemetry(line) {
         return;
     }
 
+    console.log("Telemetry Parsed:", telemetry);
+
     socket.broadcastTelemetry(telemetry);
 
 }
