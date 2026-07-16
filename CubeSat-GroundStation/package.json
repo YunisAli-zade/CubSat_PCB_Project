@@ -8,6 +8,7 @@
     "dev": "nodemon server/app.js"
   },
   "dependencies": {
+    "@serialport/parser-readline": "^13.0.0",
     "express": "^5.1.0",
     "serialport": "^13.0.0",
     "socket.io": "^4.8.1"

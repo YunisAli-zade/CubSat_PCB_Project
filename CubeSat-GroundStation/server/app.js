@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const path = require("path");
+const serial = require("./serial");
 
 const config = require("./config");
 const logger = require("./logger");
@@ -23,5 +24,9 @@ io.on("connection", (socket) => {
 });
 
 server.listen(config.server.port, () => {
+
     logger.info(`🚀 Ground Station running at http://localhost:${config.server.port}`);
+
+    serial.connect();
+    
 });
